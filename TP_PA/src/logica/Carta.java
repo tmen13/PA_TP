@@ -2,7 +2,15 @@ package logica;
 
 public abstract class Carta {
 	int posX, posY;
+	boolean visivel = false;
 	Nave nave;
+		
+	public boolean isVisivel() {
+		return visivel;
+	}
+	public void setVisivel(boolean visivel) {
+		this.visivel = visivel;
+	}
 	public int getPosX() {
 		return posX;
 	}
