@@ -52,7 +52,7 @@ public class aguardaReabastecer extends Estado {
 	}
 
 	@Override
-	public Estado lutar(int forca, Estado e) {
+	public Estado lutar(int forca) {
 		// TODO Auto-generated method stub
 		return null;
 	}

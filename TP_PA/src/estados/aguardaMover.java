@@ -1,8 +1,6 @@
 package estados;
 
-import logica.Jogo;
-import logica.Mercadoria;
-import logica.NaoPirata;
+import logica.*;
 
 public class aguardaMover extends Estado{
 
@@ -28,38 +26,34 @@ public class aguardaMover extends Estado{
 
 	@Override
 	public Estado mover(int x, int y) {
-		//if(getJogo().getCarta() instanceof NaoPirata)
+		if(getJogo().getCarta() instanceof Pirata)
+			return new aguardaCombate(getJogo(),this);
 		return new aguardaExploracao(getJogo());
 	}
 
 	@Override
 	public Estado comprar(Mercadoria tipo, int preco) {
-		// TODO Auto-generated method stub
-		return null;
+		return this;
 	}
 
 	@Override
 	public Estado vender(Mercadoria tipo, int preco) {
-		// TODO Auto-generated method stub
-		return null;
+		return this;
 	}
 
 	@Override
 	public Estado upgradeCargo() {
-		// TODO Auto-generated method stub
-		return null;
+		return this;
 	}
 
 	@Override
 	public Estado upgradeForca() {
-		// TODO Auto-generated method stub
-		return null;
+		return this;
 	}
 
 	@Override
-	public Estado lutar(int forca, Estado e) {
-		// TODO Auto-generated method stub
-		return null;
+	public Estado lutar(int forca) {
+		return this;
 	}
 
 }

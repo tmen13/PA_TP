@@ -39,7 +39,7 @@ public class Jogo {
 		this.capital = capital;
 	}
 	
-	public Carta getCarta(){
+	public Planeta getCarta(){
 		return null;
 	}
 	

@@ -51,7 +51,7 @@ public class aguardaVenda extends Estado {
 	}
 
 	@Override
-	public Estado lutar(int forca, Estado e) {
+	public Estado lutar(int forca) {
 		return this;
 	}
 
