@@ -17,8 +17,7 @@ public class aguardaInicio extends Estado {
 
 	@Override
 	public Estado comecaJogo() {
-		// TODO Auto-generated method stub
-		return null;
+		return new aguardaExploracao(getJogo());
 	}
 
 	@Override
@@ -52,8 +51,7 @@ public class aguardaInicio extends Estado {
 	}
 
 	@Override
-	public Estado lutar(int forca) {
-		// TODO Auto-generated method stub
+	public Estado lutar(int forca, Estado e) {
 		return this;
 	}
 

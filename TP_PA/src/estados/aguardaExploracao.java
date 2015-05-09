@@ -48,20 +48,17 @@ public class aguardaExploracao extends Estado{
 
 	@Override
 	public Estado upgradeCargo() {
-		// TODO Auto-generated method stub
-		return null;
+		return this;
 	}
 
 	@Override
 	public Estado upgradeForca() {
-		// TODO Auto-generated method stub
-		return null;
+		return this;
 	}
 
 	@Override
-	public Estado lutar(int forca) {
-		// TODO Auto-generated method stub
-		return null;
+	public Estado lutar(int forca, Estado e) {
+		return this;
 	}
 
 }
