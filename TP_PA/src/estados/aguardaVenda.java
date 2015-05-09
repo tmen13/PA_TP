@@ -32,13 +32,12 @@ public class aguardaVenda extends Estado {
 
 	@Override
 	public Estado comprar(Mercadoria tipo, int preco) {
-		return this;
+		return new aguardaCompra(getJogo());
 	}
 
 	@Override
 	public Estado vender(Mercadoria tipo, int preco) {
-		// TODO Auto-generated method stub
-		return null;
+		return this;
 	}
 
 	@Override

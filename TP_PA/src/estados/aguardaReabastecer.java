@@ -18,48 +18,41 @@ public class aguardaReabastecer extends Estado {
 
 	@Override
 	public Estado comecaJogo() {
-		// TODO Auto-generated method stub
-		return null;
+		return this;
 	}
 
 	@Override
 	public Estado desistir() {
-		// TODO Auto-generated method stub
-		return null;
+		return new aguardaInicio(getJogo());
 	}
 
 	@Override
 	public Estado mover(int x, int y) {
-		// TODO Auto-generated method stub
-		return null;
+		return this;
 	}
 
 	@Override
 	public Estado comprar(Mercadoria tipo, int preco) {
-		// TODO Auto-generated method stub
-		return null;
+		return this;
 	}
 
 	@Override
 	public Estado vender(Mercadoria tipo, int preco) {
-		// TODO Auto-generated method stub
-		return null;
+		return new aguardaVenda(getJogo());
 	}
 
 	@Override
 	public Estado upgradeCargo() {
-		// TODO Auto-generated method stub
-		return null;
+		return this;
 	}
 
 	@Override
 	public Estado upgradeForca() {
-		// TODO Auto-generated method stub
-		return null;
+		return this;
 	}
 
 	@Override
-	public Estado lutar(int forca) {
+	public Estado lutar(int forca, Estado e) {
 		// TODO Auto-generated method stub
 		return null;
 	}

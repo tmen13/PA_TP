@@ -2,6 +2,7 @@ package estados;
 
 import logica.Jogo;
 import logica.Mercadoria;
+import logica.NaoPirata;
 
 public class aguardaMover extends Estado{
 
@@ -12,26 +13,23 @@ public class aguardaMover extends Estado{
 
 	@Override
 	public Estado defineNomeJogador(String nome) {
-		// TODO Auto-generated method stub
-		return null;
+		return this;
 	}
 
 	@Override
 	public Estado comecaJogo() {
-		// TODO Auto-generated method stub
-		return null;
+		return this;
 	}
 
 	@Override
 	public Estado desistir() {
-		// TODO Auto-generated method stub
-		return null;
+		return new aguardaInicio(getJogo());
 	}
 
 	@Override
 	public Estado mover(int x, int y) {
-		// TODO Auto-generated method stub
-		return null;
+		//if(getJogo().getCarta() instanceof NaoPirata)
+		return new aguardaExploracao(getJogo());
 	}
 
 	@Override
@@ -59,7 +57,7 @@ public class aguardaMover extends Estado{
 	}
 
 	@Override
-	public Estado lutar(int forca) {
+	public Estado lutar(int forca, Estado e) {
 		// TODO Auto-generated method stub
 		return null;
 	}
