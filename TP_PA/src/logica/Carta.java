@@ -29,4 +29,6 @@ public abstract class Carta {
 	public void setNave(Nave nave) {
 		this.nave = nave;
 	}
+	
+	public abstract String toString();
 }

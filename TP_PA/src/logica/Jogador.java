@@ -6,9 +6,9 @@ public class Jogador {
 	int capital = 10;
 	Nave nave;
 		
-	public Jogador(String nome) {
+	public Jogador() {
 		super();
-		this.nome = nome;
+		nave = new Nave();
 	}
 	public String getNome() {
 		return nome;
