@@ -26,7 +26,7 @@ public class aguardaMover extends Estado{
 
 	@Override
 	public Estado mover(int x, int y) {
-		if(getJogo().getCarta() instanceof Pirata)
+		if(getJogo().getPlaneta() instanceof Pirata)
 			return new aguardaCombate(getJogo(),this);
 		return new aguardaExploracao(getJogo());
 	}

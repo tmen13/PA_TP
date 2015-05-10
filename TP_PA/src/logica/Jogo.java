@@ -11,6 +11,10 @@ public class Jogo {
 	int capital = 30;
 	Estado estado;
 	
+	public ArrayList<Cubo> getReserva() {
+		return reserva;
+	}
+
 	public Jogo() {
 		super();
 	}
@@ -39,8 +43,13 @@ public class Jogo {
 		this.capital = capital;
 	}
 	
-	public Planeta getCarta(){
+	public Planeta getPlaneta(){
 		return null;
+	}
+	
+	public Carta getCarta(){
+		return null;
+		
 	}
 	
 }
