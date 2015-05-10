@@ -7,8 +7,8 @@ import estados.*;
 
 public class Jogo {
 	Jogador jogador;
-	ArrayList<Carta> cartas;
-	ArrayList<Cubo> reserva;
+	ArrayList<Carta> cartas = new ArrayList<Carta>();
+	ArrayList<Cubo> reserva = new ArrayList<Cubo>();
 	int capital = 30;
 	Estado estado;
 	
@@ -58,7 +58,7 @@ public class Jogo {
 		return null;		
 	}
 	
-	public void startGame(){
+	public void configuraJogo(){
 		criaTabuleiro();
 		criaCubos();
 	}
@@ -81,8 +81,8 @@ public class Jogo {
 	}
 
 	private void criaTabuleiro() {		
-		for(int i = 0;i<2;i++)
-			cartas.add(new BuracoNegro());
+		cartas.add(new BuracoNegro());
+		cartas.add(new BuracoNegro());
 		
 		for(int i = 0;i<12;i++)
 			cartas.add(new Vazia());
@@ -100,10 +100,10 @@ public class Jogo {
 		
 		Collections.shuffle(cartas);
 		cartas.add(0, new BuracoNegro());
-		cartas.add(cartas.size()-1, new BuracoNegro());
-		
+		cartas.add(cartas.size(), new BuracoNegro());		
 	}
 
+	//funçoes para os estados
 	public void desistir() {
         setEstado(getEstado().desistir());
     }
@@ -115,6 +115,5 @@ public class Jogo {
 
     public void comecarJogo() {
         setEstado(getEstado().comecaJogo());
-    }
-	
+    }	
 }
