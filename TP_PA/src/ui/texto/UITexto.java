@@ -50,7 +50,7 @@ public class UITexto {
 				mostraTabuleiro(jogo);
 				break;
 			case 3: //reabastecer mercado
-
+				System.out.println(jogo.dadoColorido());
 				break;
 			case 4: //vender mercadorias
 				System.out.println("selecione a mercadoria que quer vender:");

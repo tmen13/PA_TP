@@ -2,14 +2,16 @@ package logica;
 
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.Random;
 
 import estados.*;
 
 public class Jogo {
-	Jogador jogador;
+	private Jogador jogador;
 	ArrayList<Carta> cartas = new ArrayList<Carta>();
 	ArrayList<Cubo> reserva = new ArrayList<Cubo>();
-	int capital = 30;
+	private ArrayList<String> coresDado = new ArrayList<String>();
+	private int capital = 30;
 	Estado estado;
 	
 	public ArrayList<Cubo> getReserva() {
@@ -18,6 +20,12 @@ public class Jogo {
 
 	public Jogo() {
 		super();
+		coresDado.add("branco");
+		coresDado.add("branco");
+		coresDado.add("vermelho");
+		coresDado.add("amarelo");
+		coresDado.add("preto");
+		coresDado.add("azul");
 		jogador = new Jogador();
 		setEstado(new aguardaInicio(this));
 	}
@@ -61,6 +69,16 @@ public class Jogo {
 	public void configuraJogo(){
 		criaTabuleiro();
 		criaCubos();
+	}
+	
+	public int dadoPreto(){
+		Random rd = new Random();
+		return rd.nextInt(7-1)+1;
+	}
+	
+	public String dadoColorido(){
+		Random rd = new Random();		
+		return coresDado.get(rd.nextInt(coresDado.size()-0)+0);	
 	}
 	
     private void criaCubos() {
