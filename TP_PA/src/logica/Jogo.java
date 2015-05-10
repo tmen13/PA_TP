@@ -12,10 +12,7 @@ public class Jogo {
 	private ArrayList<String> coresDado = new ArrayList<String>();
 	private int capital = 30;
 	private Estado estado;
-
-	public ArrayList<Cubo> getReserva() {
-		return reserva;
-	}
+	private Carta cartaComNave;
 
 	public Jogo() {
 		super();
@@ -28,58 +25,21 @@ public class Jogo {
 		jogador = new Jogador();
 		setEstado(new aguardaInicio(this));
 	}
-
-	public Estado getEstado() {
-		return estado;
+	
+	public void procuraNave(){
+		for(int i = 0; i < cartas.size();i++){
+			
+		}
 	}
 
-	private void setEstado(Estado estado) {
-		this.estado = estado;
-	}
-
-	public Jogador getJogador() {
-		return jogador;
-	}
-
-	public void setJogador(Jogador jogador) {
-		this.jogador = jogador;
-	}
-
-	public ArrayList<Carta> getCartas() {
-		return cartas;
-	}
-
-	public int getCapital() {
-		return capital;
-	}
-
-	public void setCapital(int capital) {
-		this.capital = capital;
-	}
-
-	public Planeta getPlaneta(){
-		return null;
-	}
-
-	public Carta getCarta(int pos){
-		return cartas.get(pos);		
+	public void comecarJogo() {
+		setEstado(getEstado().comecaJogo());
 	}
 
 	public boolean configuraJogo(){
 		criaTabuleiro();
 		criaCubos();
-
 		return true;
-	}
-
-	public int dadoPreto(){
-		Random rd = new Random();
-		return rd.nextInt(7-1)+1;
-	}
-
-	public String dadoColorido(){
-		Random rd = new Random();		
-		return coresDado.get(rd.nextInt(coresDado.size()-0)+0);	
 	}
 
 	private void criaCubos() {
@@ -125,9 +85,14 @@ public class Jogo {
 		getCarta(0).setNave(jogador.getNave());
 	}
 
-	//funçoes para os estados
-	public void desistir() {
-		setEstado(getEstado().desistir());
+	public String dadoColorido(){
+		Random rd = new Random();		
+		return coresDado.get(rd.nextInt(coresDado.size()-0)+0);	
+	}
+
+	public int dadoPreto(){
+		Random rd = new Random();
+		return rd.nextInt(7-1)+1;
 	}
 
 	public void defineNomeJogador(String nome) {
@@ -135,11 +100,51 @@ public class Jogo {
 		setEstado(getEstado().defineNomeJogador(nome));
 	}
 
-	public void comecarJogo() {
-		setEstado(getEstado().comecaJogo());
+	public void desistir() {
+		setEstado(getEstado().desistir());
+	}
+
+	public Estado explora(){			
+		return new aguardaReabastecer(this);    	
+	}
+
+	public int getCapital() {
+		return capital;
+	}
+
+	public Carta getCarta(int pos){
+		return cartas.get(pos);		
+	}
+
+	public ArrayList<Carta> getCartas() {
+		return cartas;
+	}
+
+	public Estado getEstado() {
+		return estado;
+	}
+
+	public Jogador getJogador() {
+		return jogador;
+	}
+
+	public Planeta getPlaneta(){
+		return null;
+	}
+
+	public ArrayList<Cubo> getReserva() {
+		return reserva;
+	}
+
+	public void setCapital(int capital) {
+		this.capital = capital;
+	}
+
+	private void setEstado(Estado estado) {
+		this.estado = estado;
 	}	
 
-	public Estado explora(){
-		return new aguardaReabastecer(this);    	
+	public void setJogador(Jogador jogador) {
+		this.jogador = jogador;
 	}
 }
