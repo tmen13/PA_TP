@@ -11,6 +11,10 @@ public class Nave implements Constantes {
 	 public void addMerc(Mercadoria merc){
 		 mercadorias.add(merc);
 	 }
+	 
+	 public void removeMerc(Mercadoria merc){
+		 mercadorias.remove(merc);
+	 }
 	 	 
 	public Nave() {
 		super();
