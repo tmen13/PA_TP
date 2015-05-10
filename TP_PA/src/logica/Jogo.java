@@ -2,7 +2,7 @@ package logica;
 
 import java.util.ArrayList;
 
-import estados.Estado;
+import estados.*;
 
 public class Jogo {
 	Jogador jogador;
@@ -17,14 +17,15 @@ public class Jogo {
 
 	public Jogo() {
 		super();
+		setEstado(new aguardaInicio(this));
 	}
 
-	public Estado getE() {
+	public Estado getEstado() {
 		return estado;
 	}
 
-	public void setE(Estado e) {
-		this.estado = e;
+	private void setEstado(Estado estado) {
+		this.estado = estado;
 	}
 
 	public Jogador getJogador() {
@@ -33,6 +34,10 @@ public class Jogo {
 
 	public void setJogador(Jogador jogador) {
 		this.jogador = jogador;
+	}
+
+	public ArrayList<Carta> getCartas() {
+		return cartas;
 	}
 
 	public int getCapital() {
@@ -51,5 +56,17 @@ public class Jogo {
 		return null;
 		
 	}
+	
+    public void desistir() {
+        setEstado(getEstado().desistir());
+    }
+    
+    public void defineNomeJogador(String nome) {
+        setEstado(getEstado().defineNomeJogador(nome));
+    }
+
+    public void comecarJogo() {
+        setEstado(getEstado().comecaJogo());
+    }
 	
 }
