@@ -31,7 +31,4 @@ public class Jogador {
 	public Nave getNave() {
 		return nave;
 	}
-	public void setNave(Nave nave) {
-		this.nave = nave;
-	}
 }

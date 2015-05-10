@@ -56,4 +56,9 @@ public class aguardaMover extends Estado{
 		return this;
 	}
 
+	@Override
+	public Estado reabastecer() {
+		return this;
+	}
+
 }

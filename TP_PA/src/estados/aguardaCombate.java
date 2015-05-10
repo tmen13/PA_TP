@@ -55,4 +55,9 @@ public class aguardaCombate extends Estado {
 		return ultimoEstado;
 	}
 
+	@Override
+	public Estado reabastecer() {
+		return this;
+	}
+
 }

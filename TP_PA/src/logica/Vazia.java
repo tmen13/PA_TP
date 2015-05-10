@@ -4,6 +4,6 @@ public class Vazia extends Carta{
 
 	@Override
 	public String toString() {
-		return "Espaço Vazio \n";
+		return "Espaço Vazio";
 	}
 }

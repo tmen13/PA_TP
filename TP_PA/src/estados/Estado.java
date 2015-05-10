@@ -14,6 +14,7 @@ public abstract class Estado {
 	abstract public Estado defineNomeJogador(String nome);
 	abstract public Estado comecaJogo();
 	abstract public Estado desistir();
+	abstract public Estado reabastecer();
 	abstract public Estado mover(int x, int y);
 	abstract public Estado comprar(Mercadoria tipo, int preco);
 	abstract public Estado vender(Mercadoria tipo, int preco);

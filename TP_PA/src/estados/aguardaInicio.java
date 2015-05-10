@@ -17,7 +17,9 @@ public class aguardaInicio extends Estado {
 
 	@Override
 	public Estado comecaJogo() {
-		return new aguardaExploracao(getJogo());
+		if(getJogo().configuraJogo())
+			return new aguardaExploracao(getJogo());
+		return this;
 	}
 
 	@Override
@@ -52,6 +54,11 @@ public class aguardaInicio extends Estado {
 
 	@Override
 	public Estado lutar(int forca) {
+		return this;
+	}
+
+	@Override
+	public Estado reabastecer() {
 		return this;
 	}
 

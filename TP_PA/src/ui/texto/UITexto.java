@@ -2,8 +2,6 @@ package ui.texto;
 
 import java.util.Scanner;
 
-import estados.aguardaExploracao;
-import estados.aguardaInicio;
 import logica.Jogo;
 
 public class UITexto {
@@ -83,10 +81,14 @@ public class UITexto {
 				break;
 			}
 		}		
+		sc.close();
 	}
 	public static void mostraTabuleiro(Jogo j){		
 		for(int i = 0; i< j.getCartas().size();i++){
 			System.out.println(j.getCartas().get(i).toString());
+			if(j.getCartas().get(i).getNave()!=null)
+				System.out.println(j.getCartas().get(i).getNave().toString());
+			System.out.println(" -------------------------- \n");
 		}
 	}
 }

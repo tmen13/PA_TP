@@ -12,8 +12,7 @@ public class aguardaReabastecer extends Estado {
 
 	@Override
 	public Estado defineNomeJogador(String nome) {
-		// TODO Auto-generated method stub
-		return null;
+		return this;
 	}
 
 	@Override
@@ -53,8 +52,12 @@ public class aguardaReabastecer extends Estado {
 
 	@Override
 	public Estado lutar(int forca) {
-		// TODO Auto-generated method stub
-		return null;
+		return this;
+	}
+
+	@Override
+	public Estado reabastecer() {
+		return this;
 	}
 
 }

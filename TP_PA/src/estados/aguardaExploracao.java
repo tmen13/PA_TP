@@ -55,4 +55,8 @@ public class aguardaExploracao extends Estado{
 		return this;
 	}
 
+	@Override
+	public Estado reabastecer() {
+		return new aguardaReabastecer(getJogo());	
+	}
 }
