@@ -26,6 +26,10 @@ public class Jogo {
 		setEstado(new aguardaInicio(this));
 	}
 	
+	public boolean temNaReserva(Cubo c){
+		return true;
+	}
+	
 	public Carta getCartaComNave() {
 		return cartaComNave;
 	}
