@@ -20,6 +20,9 @@ public class Planeta extends Carta {
 		this.jogo = j;
 		cubos.clear();
 	}
+	public ArrayList<Cubo> getCubos() {
+		return cubos;
+	}
 	public String getNome() {
 		return nome;
 	}

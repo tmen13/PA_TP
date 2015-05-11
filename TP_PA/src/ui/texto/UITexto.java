@@ -22,33 +22,35 @@ public class UITexto {
 		jogo.comecarJogo();
 
 		while(verifica){
+			System.out.println(jogo.getEstado());
 			System.out.println("Selecione uma das seguintes opcoes:");
 			System.out.println("1-Novo Jogo (desistir)");
 			System.out.println("2-Explorar");
-			//System.out.println("3-Reabastecer Mercado");
+			System.out.println("3-Reabastecer Mercado");
 			System.out.println("4-Vender Mercadorias");
 			System.out.println("5-Comprar Mercadorias");
 			System.out.println("6-Melhorar armas da nave");
 			System.out.println("7-Aumentar capacidade da nave");
-			//System.out.println("8-Lançar dado Cor");
+			System.out.println("8-Ver mapa");
 			//System.out.println("9-Lançar dado normal");
 			System.out.println("10-Mover");
 			System.out.println("0-sair");
 			int opcao=sc.nextInt();
 			switch(opcao){
 			case 1: //novo jogo
-					System.out.println("Desistiu...");
-					System.out.println("A sua Pontuação foi: " + jogo.getJogador().getPontuacao());
-					System.out.println("Começando novo Jogo...");
-					jogo.desistir();
-					jogo.configuraJogo();
-					jogo.comecarJogo();
+				System.out.println("Desistiu...");
+				System.out.println("A sua Pontuação foi: " + jogo.getJogador().getPontuacao());
+				System.out.println("Começando novo Jogo...");
+				jogo.desistir();
+				jogo.configuraJogo();
+				jogo.comecarJogo();
 				break;
 			case 2: //explorar
+				jogo.explora();
 				mostraTabuleiro(jogo);
 				break;
 			case 3: //reabastecer mercado
-				System.out.println(jogo.dadoColorido());
+				jogo.reabastecer();
 				break;
 			case 4: //vender mercadorias
 				System.out.println("selecione a mercadoria que quer vender:");
@@ -64,8 +66,8 @@ public class UITexto {
 			case 7: //aumentar capacidade nave
 
 				break;
-			case 8: //lançar dado cor
-
+			case 8: 
+				mostraTabuleiro(jogo);
 				break;
 			case 9: //lançar dado normal
 
@@ -85,10 +87,14 @@ public class UITexto {
 	}
 	public static void mostraTabuleiro(Jogo j){		
 		for(int i = 0; i< j.getCartas().size();i++){
-			System.out.println(j.getCartas().get(i).toString());
-			if(j.getCartas().get(i).getNave()!=null)
-				System.out.println(j.getCartas().get(i).getNave().toString());
-			System.out.println(" -------------------------- \n");
+			if(j.getCartas().get(i).isVisivel()){
+				System.out.println(j.getCartas().get(i).toString());
+				if(j.getCartas().get(i).getNave()!=null)
+					System.out.println(j.getCartas().get(i).getNave().toString());
+				System.out.println(" -------------------------- \n");
+			} else {
+				System.out.println(" (por descobrir) \n");
+			}
 		}
 	}
 }

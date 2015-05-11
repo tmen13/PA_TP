@@ -62,4 +62,10 @@ public class aguardaInicio extends Estado {
 		return this;
 	}
 
+	@Override
+	public Estado explora() {
+		// TODO Auto-generated method stub
+		return this;
+	}
+
 }

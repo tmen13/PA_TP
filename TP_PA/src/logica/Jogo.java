@@ -26,9 +26,18 @@ public class Jogo {
 		setEstado(new aguardaInicio(this));
 	}
 	
+	public Carta getCartaComNave() {
+		return cartaComNave;
+	}
+
+	public void setCartaComNave(Carta cartaComNave) {
+		this.cartaComNave = cartaComNave;
+	}
+
 	public void procuraNave(){
 		for(int i = 0; i < cartas.size();i++){
-			
+			if(getCartas().get(i).getNave()!=null)
+				setCartaComNave((getCartas().get(i)));
 		}
 	}
 
@@ -39,6 +48,8 @@ public class Jogo {
 	public boolean configuraJogo(){
 		criaTabuleiro();
 		criaCubos();
+		procuraNave();
+		getCartaComNave().setVisivel(true);
 		return true;
 	}
 
@@ -104,8 +115,12 @@ public class Jogo {
 		setEstado(getEstado().desistir());
 	}
 
-	public Estado explora(){			
-		return new aguardaReabastecer(this);    	
+	public void explora(){	
+		setEstado(getEstado().explora());		
+	}
+	
+	public void reabastecer(){
+		setEstado(getEstado().reabastecer());
 	}
 
 	public int getCapital() {

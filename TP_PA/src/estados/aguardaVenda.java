@@ -7,7 +7,6 @@ public class aguardaVenda extends Estado {
 
 	public aguardaVenda(Jogo jogo) {
 		super(jogo);
-		// TODO Auto-generated constructor stub
 	}
 
 	@Override
@@ -57,6 +56,12 @@ public class aguardaVenda extends Estado {
 
 	@Override
 	public Estado reabastecer() {
+		return this;
+	}
+
+	@Override
+	public Estado explora() {
+		// TODO Auto-generated method stub
 		return this;
 	}
 

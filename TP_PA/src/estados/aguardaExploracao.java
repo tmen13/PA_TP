@@ -57,6 +57,16 @@ public class aguardaExploracao extends Estado{
 
 	@Override
 	public Estado reabastecer() {
-		return new aguardaReabastecer(getJogo());	
+		return this;	
+	}
+
+	@Override
+	public Estado explora() {
+		for(int i = 0; i< getJogo().getCartas().size();i++){
+			if(getJogo().getCartas().get(i)==getJogo().getCartaComNave()){
+				getJogo().getCartas().get(i+1).setVisivel(true);
+			}
+		}
+		return new aguardaReabastecer(getJogo());
 	}
 }

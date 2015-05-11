@@ -2,13 +2,13 @@ package estados;
 
 import logica.Jogo;
 import logica.Mercadoria;
+import logica.Planeta;
 
 public class aguardaReabastecer extends Estado {
 
 	public aguardaReabastecer(Jogo jogo) {
 		super(jogo);
-		// TODO Auto-generated constructor stub
-	}
+	}	
 
 	@Override
 	public Estado defineNomeJogador(String nome) {
@@ -37,7 +37,7 @@ public class aguardaReabastecer extends Estado {
 
 	@Override
 	public Estado vender(Mercadoria tipo, int preco) {
-		return new aguardaVenda(getJogo());
+		return this;
 	}
 
 	@Override
@@ -57,6 +57,22 @@ public class aguardaReabastecer extends Estado {
 
 	@Override
 	public Estado reabastecer() {
+		Planeta aux;
+		for(int i = 0; i< getJogo().getCartas().size();i++){
+			if(getJogo().getCartas().get(i).isVisivel()){
+				if(getJogo().getCartas().get(i) instanceof Planeta){
+					aux = (Planeta) getJogo().getCartas().get(i);						
+					if(aux.getCubos().isEmpty()){
+						System.out.print("esta vazio");
+					}
+				}
+			}
+		}
+		return new aguardaVenda(getJogo());
+	}
+
+	@Override
+	public Estado explora() {
 		return this;
 	}
 
