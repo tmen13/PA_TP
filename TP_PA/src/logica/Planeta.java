@@ -77,12 +77,13 @@ public class Planeta extends Carta {
 			str.append("Água: " + precoAgua + "\n");
 			str.append("Comida: " + precoComida + "\n");
 			str.append("Medicamento: " + precoMed + "\n");
-			str.append("Ilegal: " + precoIlegal);
+			str.append("Ilegal: " + precoIlegal + "\n");
 			if(cubos.isEmpty())
 				str.append("\n(sem mercadoria)\n");
 			else {
+				str.append("Mercadoria: \n");
 				for(Cubo m : cubos){
-					m.getClass().toString();
+					str.append(m.getClass().toString());
 				}
 			}
 		} else {
@@ -92,12 +93,13 @@ public class Planeta extends Carta {
 			if(precoComida != 0)
 				str.append("Comida: " + precoComida + "\n");
 			if(precoMed != 0)
-				str.append("Medicamento: " + precoMed);
+				str.append("Medicamento: " + precoMed + "\n");
 			if(cubos.isEmpty())
 				str.append("(sem mercadoria)\n");
 			else {
+				str.append("Mercadoria: \n");
 				for(Cubo m : cubos){
-					m.getClass().toString();
+					str.append(m.getClass().toString());
 				}
 			}
 		}

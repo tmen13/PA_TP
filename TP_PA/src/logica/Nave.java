@@ -12,7 +12,11 @@ public class Nave implements Constantes {
 		 mercadorias.add(merc);
 	 }
 	 
-	 public void removeMerc(Mercadoria merc){
+	 public ArrayList<Mercadoria> getMercadorias() {
+		return mercadorias;
+	}
+
+	public void removeMerc(Mercadoria merc){
 		 mercadorias.remove(merc);
 	 }
 	 	 

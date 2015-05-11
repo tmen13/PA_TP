@@ -6,11 +6,12 @@ import java.util.Random;
 import estados.*;
 
 public class Jogo {
+	private int indiceCartaNave;
 	private Jogador jogador;
 	private ArrayList<Carta> cartas = new ArrayList<Carta>();
 	private ArrayList<Cubo> reserva = new ArrayList<Cubo>();
 	private ArrayList<String> coresDado = new ArrayList<String>();
-	private int capital = 30;
+	private int banca = 20;
 	private Estado estado;
 	private Carta cartaComNave;
 
@@ -33,16 +34,27 @@ public class Jogo {
 	public Carta getCartaComNave() {
 		return cartaComNave;
 	}
-
+	
 	public void setCartaComNave(Carta cartaComNave) {
 		this.cartaComNave = cartaComNave;
 	}
 
 	public void procuraNave(){
 		for(int i = 0; i < cartas.size();i++){
-			if(getCartas().get(i).getNave()!=null)
+			if(getCartas().get(i).getNave()!=null){
 				setCartaComNave((getCartas().get(i)));
+				getCartas().get(i).setNave(getJogador().getNave());
+				setIndiceCartaNave(i);
+			}
 		}
+	}
+
+	public int getIndiceCartaNave() {
+		return indiceCartaNave;
+	}
+
+	public void setIndiceCartaNave(int indiceCartaNave) {
+		this.indiceCartaNave = indiceCartaNave;
 	}
 
 	public void comecarJogo() {
@@ -126,9 +138,9 @@ public class Jogo {
 	public void reabastecer(){
 		setEstado(getEstado().reabastecer());
 	}
-
-	public int getCapital() {
-		return capital;
+	
+	public int getBanca() {
+		return banca;
 	}
 
 	public Carta getCarta(int pos){
@@ -155,8 +167,8 @@ public class Jogo {
 		return reserva;
 	}
 
-	public void setCapital(int capital) {
-		this.capital = capital;
+	public void setBanca(int banca) {
+		this.banca = banca;
 	}
 
 	private void setEstado(Estado estado) {
@@ -165,5 +177,17 @@ public class Jogo {
 
 	public void setJogador(Jogador jogador) {
 		this.jogador = jogador;
+	}
+
+	public void naoVende() {
+		setEstado(getEstado().naoVende());		
+	}
+	
+	public void naoCompra() {
+		setEstado(getEstado().naoCompra());		
+	}
+	
+	public void mover(){	
+		setEstado(getEstado().mover(getCartas().get(getIndiceCartaNave()+1)));
 	}
 }

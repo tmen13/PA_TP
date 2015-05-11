@@ -25,9 +25,18 @@ public class aguardaMover extends Estado{
 	}
 
 	@Override
-	public Estado mover(int x, int y) {
-		if(getJogo().getPlaneta().isPirata())
-			return new aguardaCombate(getJogo(),this);
+	public Estado mover(Carta c) {
+		getJogo().getCartas().get(getJogo().getIndiceCartaNave()).setNave(null);
+		getJogo().getCartas().get(getJogo().getIndiceCartaNave()+1).setNave(getJogo().getJogador().getNave());
+		getJogo().procuraNave();
+		getJogo().getJogador().setCapital(getJogo().getJogador().getCapital()-1);
+		if(c instanceof Planeta){
+			Planeta aux = (Planeta)c;
+			if(aux.isPirata())
+				return new aguardaCombate(getJogo(),this);
+			else
+				return new aguardaExploracao(getJogo());
+			}		
 		return new aguardaExploracao(getJogo());
 	}
 
@@ -52,7 +61,7 @@ public class aguardaMover extends Estado{
 	}
 
 	@Override
-	public Estado lutar(int forca) {
+	public Estado lutar() {
 		return this;
 	}
 
@@ -63,6 +72,18 @@ public class aguardaMover extends Estado{
 
 	@Override
 	public Estado explora() {
+		// TODO Auto-generated method stub
+		return this;
+	}
+
+	@Override
+	public Estado naoVende() {
+		// TODO Auto-generated method stub
+		return this;
+	}
+
+	@Override
+	public Estado naoCompra() {
 		// TODO Auto-generated method stub
 		return this;
 	}

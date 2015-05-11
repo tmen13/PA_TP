@@ -1,5 +1,6 @@
 package estados;
 
+import logica.Carta;
 import logica.Jogo;
 import logica.Mercadoria;
 
@@ -26,7 +27,7 @@ public class aguardaCompra extends Estado{
 	}
 
 	@Override
-	public Estado mover(int x, int y) {
+	public Estado mover(Carta c) {
 		return new aguardaMover(getJogo());
 	}
 
@@ -51,7 +52,7 @@ public class aguardaCompra extends Estado{
 	}
 
 	@Override
-	public Estado lutar(int forca) {
+	public Estado lutar() {
 		return this;
 	}
 
@@ -64,6 +65,18 @@ public class aguardaCompra extends Estado{
 	public Estado explora() {
 		// TODO Auto-generated method stub
 		return this;
+	}
+
+	@Override
+	public Estado naoVende() {
+		// TODO Auto-generated method stub
+		return this;
+	}
+
+	@Override
+	public Estado naoCompra() {
+		// TODO Auto-generated method stub
+		return new aguardaMover(getJogo());
 	}
 
 }

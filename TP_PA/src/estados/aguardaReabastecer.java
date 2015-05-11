@@ -2,7 +2,7 @@ package estados;
 
 import logica.*;
 
-public class aguardaReabastecer extends Estado {
+public class aguardaReabastecer extends Estado implements Constantes {
 
 	public aguardaReabastecer(Jogo jogo) {
 		super(jogo);
@@ -24,10 +24,9 @@ public class aguardaReabastecer extends Estado {
 	}
 
 	@Override
-	public Estado mover(int x, int y) {
+	public Estado mover(Carta c) {
 		return this;
 	}
-
 	@Override
 	public Estado comprar(Mercadoria tipo, int preco) {
 		return this;
@@ -49,7 +48,7 @@ public class aguardaReabastecer extends Estado {
 	}
 
 	@Override
-	public Estado lutar(int forca) {
+	public Estado lutar() {
 		return this;
 	}
 
@@ -68,12 +67,13 @@ public class aguardaReabastecer extends Estado {
 								aux.getCubos().remove(1);
 
 						} else {
-							for(int q = 0;q<1;q++){
+							for(int q = 0;q<2;q++){
 								String dado = getJogo().dadoColorido();
 								switch (dado) {
 								case "preto":
 									return new aguardaCombate(getJogo(), this);
 								case "branco":
+									verificaIlegal();
 									aux.getCubos().add(q, new Branco());
 									break;
 								case "amarelo":
@@ -99,8 +99,30 @@ public class aguardaReabastecer extends Estado {
 		return new aguardaVenda(getJogo());
 	}
 
+	private void verificaIlegal() {
+		boolean pagaAlfandega = false;
+		for(Mercadoria m : getJogo().getJogador().getNave().getMercadorias()){
+			if(m instanceof Ilegal){
+				getJogo().getJogador().getNave().getMercadorias().remove(m);
+				pagaAlfandega = true;
+			}
+		}
+		if(pagaAlfandega)
+			getJogo().getJogador().setCapital(getJogo().getJogador().getCapital()-CUSTO_ALFANDEGA);		
+	}
+
 	@Override
 	public Estado explora() {
+		return this;
+	}
+
+	@Override
+	public Estado naoVende() {
+		return new aguardaCompra(getJogo());
+	}
+
+	@Override
+	public Estado naoCompra() {
 		return this;
 	}
 

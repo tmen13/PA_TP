@@ -32,8 +32,7 @@ public class UITexto {
 			System.out.println("6-Melhorar armas da nave");
 			System.out.println("7-Aumentar capacidade da nave");
 			System.out.println("8-Ver mapa");
-			//System.out.println("9-Lançar dado normal");
-			System.out.println("10-Mover");
+			System.out.println("9-Mover");
 			System.out.println("0-sair");
 			int opcao=sc.nextInt();
 			switch(opcao){
@@ -53,12 +52,13 @@ public class UITexto {
 				jogo.reabastecer();
 				break;
 			case 4: //vender mercadorias
+				if(jogo.getJogador().getNave().getMercadorias().isEmpty())
+					jogo.naoVende();
 				System.out.println("selecione a mercadoria que quer vender:");
 				System.out.println("0-");
-				//j.vender();
 				break;
 			case 5: //comrpar mercadorias
-
+				jogo.naoCompra();
 				break;
 			case 6: //melhorar armas
 
@@ -69,11 +69,8 @@ public class UITexto {
 			case 8: 
 				mostraTabuleiro(jogo);
 				break;
-			case 9: //lançar dado normal
-
-				break;
-			case 10: //mover
-
+			case 9: //mover
+				jogo.mover();
 				break;
 			case 0: //sair
 				verifica=false;

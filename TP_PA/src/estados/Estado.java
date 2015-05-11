@@ -16,10 +16,12 @@ public abstract class Estado {
 	abstract public Estado desistir();
 	abstract public Estado explora();
 	abstract public Estado reabastecer();
-	abstract public Estado mover(int x, int y);
+	abstract public Estado mover(Carta c);
 	abstract public Estado comprar(Mercadoria tipo, int preco);
 	abstract public Estado vender(Mercadoria tipo, int preco);
+	abstract public Estado naoVende();
+	abstract public Estado naoCompra();
 	abstract public Estado upgradeCargo();
 	abstract public Estado upgradeForca();
-	abstract public Estado lutar(int forca);
+	abstract public Estado lutar();
 }

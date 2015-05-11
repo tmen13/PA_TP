@@ -3,7 +3,7 @@ package logica;
 public abstract class Carta {
 	int posX, posY;
 	boolean visivel = false;
-	Nave nave;
+	Nave nave = null;
 		
 	public boolean isVisivel() {
 		return visivel;

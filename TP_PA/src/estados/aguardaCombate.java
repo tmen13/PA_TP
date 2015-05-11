@@ -1,5 +1,6 @@
 package estados;
 
+import logica.Carta;
 import logica.Jogo;
 import logica.Mercadoria;
 
@@ -7,7 +8,7 @@ public class aguardaCombate extends Estado {
 	Estado ultimoEstado;
 	public aguardaCombate(Jogo jogo, Estado ultimoEstado) {
 		super(jogo);
-		this.ultimoEstado= ultimoEstado;
+		this.ultimoEstado = ultimoEstado;
 	}
 
 	@Override
@@ -26,7 +27,7 @@ public class aguardaCombate extends Estado {
 	}
 
 	@Override
-	public Estado mover(int x, int y) {
+	public Estado mover(Carta c) {
 		return this;
 	}
 
@@ -51,7 +52,14 @@ public class aguardaCombate extends Estado {
 	}
 
 	@Override
-	public Estado lutar(int forca) {
+	public Estado lutar() {
+		int forca = getJogo().dadoPreto();
+		if(getJogo().getJogador().getNave().getForca() >= forca)
+			return ultimoEstado;
+		else{
+			int dif = forca - getJogo().getJogador().getNave().getForca();
+			getJogo().getJogador().setCapital(getJogo().getJogador().getCapital()-dif);
+		}
 		return ultimoEstado;
 	}
 
@@ -62,6 +70,18 @@ public class aguardaCombate extends Estado {
 
 	@Override
 	public Estado explora() {
+		// TODO Auto-generated method stub
+		return this;
+	}
+
+	@Override
+	public Estado naoVende() {
+		// TODO Auto-generated method stub
+		return this;
+	}
+
+	@Override
+	public Estado naoCompra() {
 		// TODO Auto-generated method stub
 		return this;
 	}
